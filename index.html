@@ -5,405 +5,770 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhysioWell - Expert Physiotherapy Care</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #f8f9fa;
+        :root {
+            --dominant-color: #2c3e50;
+            --dominant-light: #34495e;
+            --secondary-color: #3498db;
+            --secondary-light: #5dade2;
+            --accent-color: #ecf0f1;
+            --accent-warm: #f8f9fa;
+            --success-color: #2ecc71;
+            --gradient-primary: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            --gradient-secondary: linear-gradient(135deg, #5dade2 0%, #85c1e2 100%);
+            
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            
+            --shadow-sm: 0 2px 8px rgba(26, 58, 74, 0.08);
+            --shadow-md: 0 4px 20px rgba(26, 58, 74, 0.12);
+            --shadow-lg: 0 8px 30px rgba(26, 58, 74, 0.15);
+            --shadow-xl: 0 12px 40px rgba(26, 58, 74, 0.2);
         }
 
-        /* Header */
+        body {
+            font-family: var(--body-font);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--dominant-color);
+            background: var(--accent-color);
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography with enhanced hierarchy */
+        h1 {
+            font-family: var(--heading-font);
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--dominant-color);
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: var(--dominant-color);
+        }
+
+        /* Enhanced Header */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
+            background: rgba(26, 58, 74, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--accent-color);
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: var(--shadow-lg);
         }
 
         nav {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 3rem;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         nav a {
-            color: white;
+            color: var(--accent-color);
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
             font-weight: 500;
+            font-family: var(--heading-font);
+            position: relative;
+            padding: 0.5rem 0;
         }
 
-        nav a:hover {
-            opacity: 0.8;
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-light);
+            transition: width 0.3s ease;
         }
 
-        /* Hero Section */
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 5rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--accent-color);
+            padding: 8rem 3rem 6rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 218, 220, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(107, 163, 184, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            background: white;
-            color: #667eea;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Section Styles */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #6c757d;
-            font-size: 1.1rem;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
             margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .about-image {
-            background: #e9ecef;
-            border-radius: 15px;
-            height: 400px;
+        .hero-visual {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            border-radius: 50%;
+            margin: 2rem auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #adb5bd;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            font-size: 5rem;
+            box-shadow: var(--shadow-xl);
+            animation: pulse 3s ease-in-out infinite, fadeInUp 0.8s ease-out 0.4s backwards;
         }
 
-        .about-text h3 {
-            color: #495057;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: var(--shadow-xl); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 50px rgba(168, 218, 220, 0.4); }
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary-light), var(--secondary-color));
+            color: var(--dominant-color);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: var(--heading-font);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(107, 163, 184, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Three-Word Message with animation */
+        .three-word-message {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin: 1.5rem 0 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .three-word-message::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        /* Enhanced Section Styles */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 30%;
+        }
+
+        /* About Section - Enhanced Grid */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .about-visual {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--secondary-light);
+        }
+
+        .about-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 17px;
+        }
+
+        .about-visual-placeholder {
+            text-align: center;
+            padding: 2rem;
+            color: var(--dominant-light);
+        }
+
+        .about-visual-placeholder svg {
+            width: 120px;
+            height: 120px;
             margin-bottom: 1rem;
-            font-size: 1.8rem;
+            opacity: 0.6;
+        }
+
+        .about-visual-placeholder p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .about-visual:hover::before {
+            left: 100%;
+        }
+
+        .about-visual:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-heading, .about-text {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(107, 163, 184, 0.1);
+        }
+
+        .about-heading:hover, .about-text:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .about-heading h3, .about-text h3 {
+            margin-bottom: 1rem;
+            color: var(--dominant-color);
         }
 
         .about-text p {
-            color: #6c757d;
-            margin-bottom: 1rem;
+            color: var(--dominant-light);
             line-height: 1.8;
         }
 
-        /* Services Section */
+        /* Enhanced Services Section */
         .services {
-            background: white;
-            border-radius: 15px;
-            padding: 4rem 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: linear-gradient(135deg, var(--accent-warm) 0%, white 100%);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(107, 163, 184, 0.2);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .service-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 12px;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid transparent;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.03;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-            border-color: #667eea;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-primary);
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: var(--shadow-lg);
         }
 
         .service-card h3 {
-            color: #495057;
-            margin-bottom: 0.5rem;
+            margin: 1.5rem 0 1rem;
         }
 
         .service-card p {
-            color: #6c757d;
+            color: var(--dominant-light);
+            line-height: 1.7;
         }
 
-        /* Testimonials Section */
-        .testimonials-container {
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 2rem 0;
-            margin: 0 -2rem;
-        }
-
-        .testimonials-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .testimonials-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        .testimonials-container::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 10px;
-        }
-
-        .testimonials-scroll {
-            display: flex;
-            gap: 2rem;
-            padding: 0 2rem;
-            min-width: min-content;
-        }
-
+        /* Testimonial images */
         .testimonial-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            min-width: 350px;
-            max-width: 350px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            flex-shrink: 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .testimonial-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
         }
 
         .testimonial-avatar {
             width: 60px;
             height: 60px;
-            background: #e9ecef;
             border-radius: 50%;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            border: 3px solid var(--secondary-light);
+            overflow: hidden;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #adb5bd;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-avatar-placeholder {
             font-size: 1.5rem;
+            color: var(--dominant-light);
         }
 
-        .testimonial-info h4 {
-            color: #495057;
-            margin-bottom: 0.2rem;
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--secondary-light);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
         }
 
-        .testimonial-info p {
-            color: #adb5bd;
-            font-size: 0.9rem;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-left-width: 8px;
         }
 
         .testimonial-text {
-            color: #6c757d;
+            color: var(--dominant-light);
             font-style: italic;
-            line-height: 1.7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .stars {
-            color: #ffc107;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .testimonial-author {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            color: var(--dominant-color);
+            font-size: 1.1rem;
         }
 
-        /* Contact Section */
+        /* Enhanced Contact Section */
         .contact {
-            background: white;
-            border-radius: 15px;
-            padding: 4rem 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: linear-gradient(135deg, white 0%, var(--accent-warm) 100%);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--secondary-light);
         }
 
         .contact-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-family: inherit;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--secondary-light);
+            border-radius: 12px;
+            font-family: var(--body-font);
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
+            background: white;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px rgba(107, 163, 184, 0.1);
+            transform: translateY(-2px);
         }
 
         .contact-form textarea {
-            resize: vertical;
             min-height: 150px;
+            resize: vertical;
         }
 
         .submit-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
+            font-family: var(--heading-font);
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
         }
 
         .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--dominant-light) 0%, var(--dominant-color) 100%);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .contact-item {
             display: flex;
             align-items: start;
-            gap: 1rem;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
         }
 
         .contact-details h3 {
-            color: #495057;
-            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
         .contact-details p {
-            color: #6c757d;
+            color: var(--dominant-light);
+            line-height: 1.6;
         }
 
-        /* Footer */
-        footer {
-            background: #2c3e50;
+        .contact-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-visual > div {
+            width: 100%;
+            height: 300px;
+            background: var(--gradient-secondary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            font-size: 4rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
+        .contact-visual > div:hover {
+            transform: scale(1.05);
+        }
 
+        /* Enhanced Footer */
+        footer {
+            background: var(--gradient-primary);
+            color: var(--accent-color);
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+        }
+
+        footer .three-word-message {
+            color: var(--secondary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 0 2rem;
+            }
+            
+            section {
+                padding: 4rem 2rem;
+            }
+            
             .about-content,
-            .contact-content {
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .courses-grid,
+            .clients-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
+        @media (max-width: 768px) {
             nav ul {
                 gap: 1rem;
                 font-size: 0.9rem;
             }
-
-            .testimonial-card {
-                min-width: 300px;
-                max-width: 300px;
+            
+            .hero {
+                padding: 5rem 2rem 4rem;
+            }
+            
+            .about-content,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -416,172 +781,322 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <h1>Expert Physiotherapy Care</h1>
-        <p>Restoring movement, enhancing performance, improving quality of life</p>
-        <button class="cta-button">Book Appointment</button>
+        <div class="hero-content">
+            <h1>Expert Physiotherapy Care</h1>
+            <p>Restoring movement, enhancing performance, improving quality of life</p>
+            <div class="hero-visual">🏥</div>
+            <button class="cta-button">Book Appointment</button>
+        </div>
     </section>
 
     <section id="about">
-        <h2>About Us</h2>
-        <p class="section-subtitle">Your trusted partner in recovery and wellness</p>
+        <h2>About PhysioWell</h2>
+        <div class="three-word-message">Heal • Move • Thrive</div>
         <div class="about-content">
-            <div class="about-image">[Physiotherapist Image Placeholder]</div>
+            <div class="about-visual">
+                <!-- Replace src with your doctor's image -->
+               <img src="/PhysioTherepist/images/6.jpeg" alt="Dr. PhysioWell"> 
+                <div class="about-visual-placeholder">
+                  <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg> --> 
+                    
+                </div>
+            </div>
+            <div class="about-heading">
+                <h3>Expert Care</h3>
+                <p>Over 15 years of specialized experience in physiotherapy and rehabilitation, bringing evidence-based treatments to every patient.</p>
+            </div>
             <div class="about-text">
-                <h3>Welcome to PhysioWell</h3>
-                <p>With over 15 years of experience in physiotherapy, we are dedicated to helping you achieve optimal physical health and wellness. Our clinic combines evidence-based treatments with personalized care to ensure the best outcomes for every patient.</p>
-                <p>We specialize in sports injuries, post-surgical rehabilitation, chronic pain management, and preventive care. Our state-of-the-art facility and compassionate approach create an environment where healing thrives.</p>
-                <p>Whether you're recovering from an injury, managing a chronic condition, or looking to enhance your athletic performance, we're here to support you every step of the way.</p>
+                <h3>Personalized Treatment</h3>
+                <p>Customized therapy plans tailored to your specific needs and goals, ensuring optimal recovery and performance enhancement.</p>
             </div>
         </div>
     </section>
 
     <section class="services" id="services">
         <h2>Our Services</h2>
-        <p class="section-subtitle">Comprehensive care tailored to your needs</p>
+        <div class="three-word-message">Recover • Strengthen • Perform</div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🏃</div>
-                <h3>Sports Injury Rehab</h3>
-                <p>Specialized treatment for athletes to recover faster and prevent future injuries.</p>
+                <h3>Sports Recovery</h3>
+                <p>Specialized rehabilitation for athletes, focusing on injury recovery and performance enhancement to get you back in the game.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🦴</div>
                 <h3>Orthopedic Care</h3>
-                <p>Expert management of musculoskeletal conditions and post-operative rehabilitation.</p>
+                <p>Comprehensive treatment for musculoskeletal conditions, including post-surgery rehabilitation and chronic pain management.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">💪</div>
                 <h3>Manual Therapy</h3>
-                <p>Hands-on techniques to improve mobility, reduce pain, and restore function.</p>
+                <p>Hands-on treatment techniques to improve mobility, reduce pain, and restore optimal function to your body.</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🧘</div>
-                <h3>Pain Management</h3>
-                <p>Holistic approaches to chronic pain relief and improved quality of life.</p>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <h2>Professional Credentials & Certifications</h2>
+        <div class="three-word-message">Certified • Qualified • Trusted</div>
+        
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image">
+                    <!-- <img src="certification-dpt.jpg" alt="Doctor of Physical Therapy"> -->
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certification</p>
+                    </div>
+                    <span class="course-badge">2018</span>
+                </div>
+                <div class="course-content">
+                    <h3>Doctor of Physical Therapy (DPT)</h3>
+                    <p>University of Medical Sciences - Advanced doctoral program in physical therapy with specialization in orthopedic and sports rehabilitation.</p>
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span>2015-2018</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Accredited</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3>Electrotherapy</h3>
-                <p>Advanced modalities including ultrasound, TENS, and electrical stimulation.</p>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <!-- <img src="certification-sports.jpg" alt="Sports Physical Therapy"> -->
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certification</p>
+                    </div>
+                    <span class="course-badge">2019</span>
+                </div>
+                <div class="course-content">
+                    <h3>Sports Physical Therapy Certification</h3>
+                    <p>American Board of Physical Therapy Specialties - Board certified specialist in sports physical therapy and athletic performance.</p>
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <span>Board Certified</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Specialist</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>Exercise Therapy</h3>
-                <p>Customized exercise programs to strengthen, condition, and prevent re-injury.</p>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <!-- <img src="certification-manual.jpg" alt="Manual Therapy"> -->
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certification</p>
+                    </div>
+                    <span class="course-badge">2020</span>
+                </div>
+                <div class="course-content">
+                    <h3>Advanced Manual Therapy Certificate</h3>
+                    <p>International Academy of Orthopedic Medicine - Comprehensive training in manual therapy techniques and joint mobilization.</p>
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4M12 8h.01"></path>
+                            </svg>
+                            <span>Advanced Level</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <!-- <img src="certification-cme.jpg" alt="Continuing Education"> -->
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certification</p>
+                    </div>
+                    <span class="course-badge">Ongoing</span>
+                </div>
+                <div class="course-content">
+                    <h3>Continuing Medical Education (CME)</h3>
+                    <p>Regular participation in advanced workshops, seminars, and conferences to stay current with latest evidence-based practices.</p>
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Annual 40+ Hours</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Updated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-showcase">
+            <h3>Professional Memberships & Affiliations</h3>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <!-- <img src="logo-apta.png" alt="APTA Member"> -->
+                    <div class="client-logo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 50px; height: 50px;">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">APTA Member</p>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <!-- <img src="logo-wcpt.png" alt="WCPT"> -->
+                    <div class="client-logo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 50px; height: 50px;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="16 12 12 8 8 12" stroke="white" fill="none" stroke-width="2"></polyline>
+                            <line x1="12" y1="16" x2="12" y2="8" stroke="white" stroke-width="2"></line>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">WCPT Certified</p>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <!-- <img src="logo-sports-med.png" alt="Sports Medicine"> -->
+                    <div class="client-logo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 50px; height: 50px;">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Sports Medicine</p>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <!-- <img src="logo-ortho.png" alt="Orthopedic Board"> -->
+                    <div class="client-logo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 50px; height: 50px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8" fill="white"></polyline>
+                            <line x1="12" y1="18" x2="12" y2="12" stroke="white" stroke-width="2"></line>
+                            <line x1="9" y1="15" x2="15" y2="15" stroke="white" stroke-width="2"></line>
+                        </svg>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Ortho Board</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="testimonials">
-        <h2>What Our Patients Say</h2>
-        <p class="section-subtitle">Real stories from real people</p>
-        <div class="testimonials-container">
-            <div class="testimonials-scroll" id="testimonialsScroll">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">JS</div>
-                        <div class="testimonial-info">
-                            <h4>John Smith</h4>
-                            <p>Marathon Runner</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"After my knee injury, I thought my running days were over. The team here not only helped me recover but made me stronger than before. I'm back to running marathons!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">SP</div>
-                        <div class="testimonial-info">
-                            <h4>Sarah Patel</h4>
-                            <p>Office Professional</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Years of desk work led to severe back pain. The personalized treatment plan and exercises have been life-changing. I'm pain-free and more productive at work!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">MJ</div>
-                        <div class="testimonial-info">
-                            <h4>Michael Johnson</h4>
-                            <p>Soccer Player</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Professional, knowledgeable, and truly caring. They guided me through ACL surgery recovery with expertise and encouragement. Highly recommend!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">EW</div>
-                        <div class="testimonial-info">
-                            <h4>Emma Williams</h4>
-                            <p>Teacher</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The holistic approach to treating my chronic shoulder pain was exactly what I needed. They addressed not just the symptoms but the root cause. Excellent care!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">DL</div>
-                        <div class="testimonial-info">
-                            <h4>David Lee</h4>
-                            <p>Fitness Enthusiast</p>
-                        </div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"From the first session, I knew I was in good hands. The treatment was effective, and they educated me on injury prevention. Can't thank them enough!"</p>
-                </div>
+        <h2>Patient Success Stories</h2>
+        <div class="three-word-message">Real • Results • Reviews</div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">After my knee injury, I thought my running days were over. The personalized treatment plan helped me recover completely. Now I'm stronger than before!</p>
+                <div class="testimonial-author">- John Smith</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Years of chronic back pain are finally gone. The combination of manual therapy and exercises was life-changing. Highly recommend!</p>
+                <div class="testimonial-author">- Sarah Patel</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Professional, knowledgeable, and truly caring. The team guided me through my ACL recovery with exceptional support every step of the way.</p>
+                <div class="testimonial-author">- Michael Johnson</div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
-        <h2>Get In Touch</h2>
-        <p class="section-subtitle">We're here to help you on your journey to wellness</p>
+        <h2>Get Started Today</h2>
+        <div class="three-word-message">Connect • Consult • Recover</div>
         <div class="contact-content">
             <form class="contact-form">
                 <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Your Phone">
-                <textarea placeholder="Your Message" required></textarea>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number">
+                <textarea placeholder="Tell us about your condition or goals" required></textarea>
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div class="contact-details">
-                        <h3>Location</h3>
-                        <p>123 Wellness Street<br>Medical Plaza, Suite 200<br>Your City, State 12345</p>
+                        <h3>Visit Us</h3>
+                        <p>123 Wellness Street<br>Medical Plaza, Suite 200<br>City, State 12345</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
                     <div class="contact-details">
-                        <h3>Phone</h3>
-                        <p>+1 (555) 123-4567<br>Mon-Fri: 8am - 6pm<br>Sat: 9am - 2pm</p>
+                        <h3>Call Us</h3>
+                        <p>+1 (555) 123-4567<br>Mon-Fri: 8am-6pm<br>Sat: 9am-2pm</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">✉️</div>
                     <div class="contact-details">
-                        <h3>Email</h3>
-                        <p>info@physiowell.com<br>appointments@physiowell.com</p>
+                        <h3>Email Us</h3>
+                        <p>info@physiowell.com<br>bookings@physiowell.com</p>
                     </div>
                 </div>
+            </div>
+            <div class="contact-visual">
+                <div>🗺️</div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 PhysioWell. All rights reserved.</p>
+        <div class="three-word-message">Move • Heal • Live</div>
+        <p>&copy; 2025 PhysioWell. All rights reserved. | Privacy Policy | Terms of Service</p>
     </footer>
 
     <script>
@@ -596,15 +1111,54 @@
             });
         });
 
-        // Form submission handler
+        // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
+            alert('Thank you for your message! We will contact you within 24 hours to schedule your consultation.');
             this.reset();
         });
 
-        // Add/Remove testimonials (for demonstration)
-        // You can modify the testimonialsScroll innerHTML to add or remove testimonials
+        // Header scroll effect
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Course enrollment buttons
+        document.querySelectorAll('.course-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseName = this.closest('.course-card').querySelector('h3').textContent;
+                alert(`Thank you for your interest in "${courseName}"! We will contact you with enrollment details.`);
+            });
+        });
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
