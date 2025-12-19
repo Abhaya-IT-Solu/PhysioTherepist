@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhysioWell - Expert Physiotherapy Care</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -23,10 +24,10 @@
             --success-color: #2ecc71;
             --gradient-primary: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             --gradient-secondary: linear-gradient(135deg, #5dade2 0%, #85c1e2 100%);
-            
+
             --heading-font: 'Poppins', sans-serif;
             --body-font: 'Inter', sans-serif;
-            
+
             --shadow-sm: 0 2px 8px rgba(26, 58, 74, 0.08);
             --shadow-md: 0 4px 20px rgba(26, 58, 74, 0.12);
             --shadow-lg: 0 8px 30px rgba(26, 58, 74, 0.15);
@@ -71,211 +72,276 @@
             color: var(--dominant-color);
         }
 
-        /* Enhanced Header */
+        /* Professional Header */
         header {
-            background: rgba(26, 58, 74, 0.95);
-            backdrop-filter: blur(10px);
-            color: var(--accent-color);
-            padding: 1.2rem 0;
+            background: var(--bg-white, #ffffff);
+            border-bottom: 1px solid var(--border-color, #dadce0);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            padding: 0.8rem 0;
-            box-shadow: var(--shadow-lg);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         nav {
-            max-width: 1400px;
+            max-width: 1280px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 3rem;
+            padding: 0 24px;
         }
 
         .logo {
-            font-family: var(--heading-font);
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: transform 0.3s ease;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary, #202124);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.2px;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-blue, #3498db);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 8px;
             align-items: center;
         }
 
         nav a {
-            color: var(--accent-color);
+            color: var(--text-secondary, #5f6368);
             text-decoration: none;
-            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 500;
-            font-family: var(--heading-font);
+            transition: all 0.2s;
             position: relative;
-            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            background: var(--secondary-blue, #e8f0fe);
+            color: var(--primary-blue, #3498db);
         }
 
         nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-light);
-            transition: width 0.3s ease;
+            display: none;
         }
 
-        nav a:hover::after {
-            width: 100%;
+        .nav-cta {
+            background: var(--secondary-color, #3498db) !important;
+            color: white !important;
+            margin-left: 8px;
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
         }
 
-        /* Enhanced Hero Section */
+        .nav-cta:hover {
+            background: var(--primary-dark, #2980b9) !important;
+            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, .3), 0 4px 8px 3px rgba(60, 64, 67, .15);
+        }
+
+        /* Modern Professional Hero Section */
         .hero {
-            background: var(--gradient-primary);
-            color: var(--accent-color);
-            padding: 8rem 3rem 6rem;
-            text-align: center;
             position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 80px 24px;
+            margin-top: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            text-align: center;
+        }
+
+        /* Hero Background Video */
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        /* Professional Overlay */
+        .hero-overlay {
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(168, 218, 220, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                    rgba(30, 58, 138, 0.85) 0%,
+                    rgba(59, 130, 246, 0.75) 100%);
+            z-index: 1;
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(107, 163, 184, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
+        /* Hero Content Container */
         .hero-content {
             position: relative;
-            z-index: 1;
-            max-width: 900px;
+            z-index: 2;
+            max-width: 1280px;
             margin: 0 auto;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1s ease-out 0.3s forwards;
         }
 
-        .hero h1 {
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 3rem;
-            font-weight: 300;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        @keyframes heroFadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .hero-visual {
-            width: 180px;
-            height: 180px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
-            border-radius: 50%;
-            margin: 2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            box-shadow: var(--shadow-xl);
-            animation: pulse 3s ease-in-out infinite, fadeInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: var(--shadow-xl); }
-            50% { transform: scale(1.05); box-shadow: 0 12px 50px rgba(168, 218, 220, 0.4); }
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--secondary-light), var(--secondary-color));
-            color: var(--dominant-color);
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
+        /* Professional Typography */
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 64px);
             font-weight: 700;
-            font-family: var(--heading-font);
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* CTA Buttons Container */
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: heroFadeIn 1s ease-out 0.6s backwards;
+        }
+
+        /* Primary CTA Button */
+        .hero-btn-primary {
+            background: #ffffff;
+            color: #1e3a8a;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
             cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: var(--shadow-lg);
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+        .hero-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: #f8fafc;
         }
 
-        .cta-button:hover::before {
-            left: 100%;
+        .hero-btn-primary:active {
+            transform: translateY(0);
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(107, 163, 184, 0.4);
+        /* Secondary CTA Button */
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
         }
 
-        .cta-button:active {
-            transform: translateY(-1px);
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
+
+        .hero-btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        /* Hide old hero elements */
+        .hero::before,
+        .hero::after,
+        .hero-visual,
+        .cta-button {
+            display: none !important;
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 500px;
+                padding: 60px 20px;
+                margin-top: 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                margin-bottom: 32px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-btn-primary,
+            .hero-btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
 
         /* Three-Word Message with animation */
         .three-word-message {
@@ -372,7 +438,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transform: rotate(45deg);
             transition: all 0.6s;
         }
@@ -386,7 +452,8 @@
             box-shadow: var(--shadow-xl);
         }
 
-        .about-heading, .about-text {
+        .about-heading,
+        .about-text {
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
@@ -395,12 +462,14 @@
             border: 1px solid rgba(107, 163, 184, 0.1);
         }
 
-        .about-heading:hover, .about-text:hover {
+        .about-heading:hover,
+        .about-text:hover {
             box-shadow: var(--shadow-md);
             transform: translateY(-5px);
         }
 
-        .about-heading h3, .about-text h3 {
+        .about-heading h3,
+        .about-text h3 {
             margin-bottom: 1rem;
             color: var(--dominant-color);
         }
@@ -466,7 +535,7 @@
             border-color: var(--secondary-color);
         }
 
-        .service-card > * {
+        .service-card>* {
             position: relative;
             z-index: 1;
         }
@@ -697,7 +766,7 @@
             justify-content: center;
         }
 
-        .contact-visual > div {
+        .contact-visual>div {
             width: 100%;
             height: 300px;
             background: var(--gradient-secondary);
@@ -711,7 +780,7 @@
             transition: all 0.3s ease;
         }
 
-        .contact-visual > div:hover {
+        .contact-visual>div:hover {
             transform: scale(1.05);
         }
 
@@ -733,22 +802,234 @@
             opacity: 0.8;
         }
 
+        /* Enhanced Course Cards with Certificate Frames */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+
+        .course-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--dominant-light);
+            padding: 2rem;
+        }
+
+        .course-image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .course-image-placeholder p {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: var(--shadow-md);
+            z-index: 2;
+        }
+
+        .course-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dominant-color);
+            font-size: 1.4rem;
+        }
+
+        .course-content p {
+            color: var(--dominant-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .course-meta-item svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Client Logos / Professional Memberships Section */
+        .client-showcase {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .client-showcase h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dominant-color);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .client-logo {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--accent-warm);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .client-logo:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            filter: grayscale(1);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .client-logo-placeholder {
+            text-align: center;
+            color: var(--secondary-color);
+        }
+
+        /* Testimonials / Patient Success Stories Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-text {
+            color: var(--dominant-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             nav {
                 padding: 0 2rem;
             }
-            
+
             section {
                 padding: 4rem 2rem;
             }
-            
+
             .about-content,
             .services-grid,
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .courses-grid,
             .clients-grid {
                 grid-template-columns: 1fr;
@@ -760,11 +1041,11 @@
                 gap: 1rem;
                 font-size: 0.9rem;
             }
-            
+
             .hero {
                 padding: 5rem 2rem 4rem;
             }
-            
+
             .about-content,
             .services-grid,
             .testimonials-grid {
@@ -773,27 +1054,54 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
-            <div class="logo">PhysioWell</div>
+            <div class="logo">
+                <div class="logo-icon">🏥</div>
+                PhysioWell
+            </div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#courses">Credentials</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Modern Professional Hero Section -->
     <section class="hero" id="home">
+        <!-- Background Video -->
+        <div class="hero-video-wrapper">
+            <video autoplay muted loop playsinline>
+                <source src="./images/hero-video.mp4" type="video/mp4">
+                <source src="./images/hero-video.webm" type="video/webm">
+            </video>
+        </div>
+
+        <!-- Professional Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>Expert Physiotherapy Care</h1>
-            <p>Restoring movement, enhancing performance, improving quality of life</p>
-            <div class="hero-visual">🏥</div>
-            <button class="cta-button">Book Appointment</button>
+            <p class="hero-subtitle">Restoring movement, enhancing performance, and improving quality of life through
+                evidence-based treatment and personalized care</p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="hero-btn-primary">
+                    Get Started
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#about" class="hero-btn-secondary">
+                    Learn More
+                </a>
+            </div>
         </div>
     </section>
 
@@ -803,22 +1111,24 @@
         <div class="about-content">
             <div class="about-visual">
                 <!-- Replace src with your doctor's image -->
-               <img src="/PhysioTherepist/images/6.jpeg" alt="Dr. PhysioWell"> 
+                <img src="./images/6.jpeg" alt="Dr. PhysioWell">
                 <div class="about-visual-placeholder">
-                  <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
-                    </svg> --> 
-                    
+                    </svg> -->
+
                 </div>
             </div>
             <div class="about-heading">
                 <h3>Expert Care</h3>
-                <p>Over 15 years of specialized experience in physiotherapy and rehabilitation, bringing evidence-based treatments to every patient.</p>
+                <p>Over 15 years of specialized experience in physiotherapy and rehabilitation, bringing evidence-based
+                    treatments to every patient.</p>
             </div>
             <div class="about-text">
                 <h3>Personalized Treatment</h3>
-                <p>Customized therapy plans tailored to your specific needs and goals, ensuring optimal recovery and performance enhancement.</p>
+                <p>Customized therapy plans tailored to your specific needs and goals, ensuring optimal recovery and
+                    performance enhancement.</p>
             </div>
         </div>
     </section>
@@ -830,17 +1140,20 @@
             <div class="service-card">
                 <div class="service-icon">🏃</div>
                 <h3>Sports Recovery</h3>
-                <p>Specialized rehabilitation for athletes, focusing on injury recovery and performance enhancement to get you back in the game.</p>
+                <p>Specialized rehabilitation for athletes, focusing on injury recovery and performance enhancement to
+                    get you back in the game.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🦴</div>
                 <h3>Orthopedic Care</h3>
-                <p>Comprehensive treatment for musculoskeletal conditions, including post-surgery rehabilitation and chronic pain management.</p>
+                <p>Comprehensive treatment for musculoskeletal conditions, including post-surgery rehabilitation and
+                    chronic pain management.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">💪</div>
                 <h3>Manual Therapy</h3>
-                <p>Hands-on treatment techniques to improve mobility, reduce pain, and restore optimal function to your body.</p>
+                <p>Hands-on treatment techniques to improve mobility, reduce pain, and restore optimal function to your
+                    body.</p>
             </div>
         </div>
     </section>
@@ -848,7 +1161,7 @@
     <section class="courses" id="courses">
         <h2>Professional Credentials & Certifications</h2>
         <div class="three-word-message">Certified • Qualified • Trusted</div>
-        
+
         <div class="courses-grid">
             <div class="course-card">
                 <div class="course-image">
@@ -864,7 +1177,8 @@
                 </div>
                 <div class="course-content">
                     <h3>Doctor of Physical Therapy (DPT)</h3>
-                    <p>University of Medical Sciences - Advanced doctoral program in physical therapy with specialization in orthopedic and sports rehabilitation.</p>
+                    <p>University of Medical Sciences - Advanced doctoral program in physical therapy with
+                        specialization in orthopedic and sports rehabilitation.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -899,7 +1213,8 @@
                 </div>
                 <div class="course-content">
                     <h3>Sports Physical Therapy Certification</h3>
-                    <p>American Board of Physical Therapy Specialties - Board certified specialist in sports physical therapy and athletic performance.</p>
+                    <p>American Board of Physical Therapy Specialties - Board certified specialist in sports physical
+                        therapy and athletic performance.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -932,7 +1247,8 @@
                 </div>
                 <div class="course-content">
                     <h3>Advanced Manual Therapy Certificate</h3>
-                    <p>International Academy of Orthopedic Medicine - Comprehensive training in manual therapy techniques and joint mobilization.</p>
+                    <p>International Academy of Orthopedic Medicine - Comprehensive training in manual therapy
+                        techniques and joint mobilization.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -965,7 +1281,8 @@
                 </div>
                 <div class="course-content">
                     <h3>Continuing Medical Education (CME)</h3>
-                    <p>Regular participation in advanced workshops, seminars, and conferences to stay current with latest evidence-based practices.</p>
+                    <p>Regular participation in advanced workshops, seminars, and conferences to stay current with
+                        latest evidence-based practices.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1014,7 +1331,9 @@
                     <!-- <img src="logo-sports-med.png" alt="Sports Medicine"> -->
                     <div class="client-logo-placeholder">
                         <svg viewBox="0 0 24 24" fill="currentColor" style="width: 50px; height: 50px;">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
                         </svg>
                         <p style="margin-top: 0.5rem; font-size: 0.85rem;">Sports Medicine</p>
                     </div>
@@ -1040,15 +1359,18 @@
         <div class="three-word-message">Real • Results • Reviews</div>
         <div class="testimonials-grid">
             <div class="testimonial-card">
-                <p class="testimonial-text">After my knee injury, I thought my running days were over. The personalized treatment plan helped me recover completely. Now I'm stronger than before!</p>
+                <p class="testimonial-text">After my knee injury, I thought my running days were over. The personalized
+                    treatment plan helped me recover completely. Now I'm stronger than before!</p>
                 <div class="testimonial-author">- John Smith</div>
             </div>
             <div class="testimonial-card">
-                <p class="testimonial-text">Years of chronic back pain are finally gone. The combination of manual therapy and exercises was life-changing. Highly recommend!</p>
+                <p class="testimonial-text">Years of chronic back pain are finally gone. The combination of manual
+                    therapy and exercises was life-changing. Highly recommend!</p>
                 <div class="testimonial-author">- Sarah Patel</div>
             </div>
             <div class="testimonial-card">
-                <p class="testimonial-text">Professional, knowledgeable, and truly caring. The team guided me through my ACL recovery with exceptional support every step of the way.</p>
+                <p class="testimonial-text">Professional, knowledgeable, and truly caring. The team guided me through my
+                    ACL recovery with exceptional support every step of the way.</p>
                 <div class="testimonial-author">- Michael Johnson</div>
             </div>
         </div>
@@ -1112,7 +1434,7 @@
         });
 
         // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        document.querySelector('.contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! We will contact you within 24 hours to schedule your consultation.');
             this.reset();
@@ -1121,22 +1443,22 @@
         // Header scroll effect
         let lastScroll = 0;
         const header = document.querySelector('header');
-        
+
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            
+
             if (currentScroll > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
+
             lastScroll = currentScroll;
         });
 
         // Course enrollment buttons
         document.querySelectorAll('.course-button').forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.preventDefault();
                 const courseName = this.closest('.course-card').querySelector('h3').textContent;
                 alert(`Thank you for your interest in "${courseName}"! We will contact you with enrollment details.`);
@@ -1161,4 +1483,5 @@
         });
     </script>
 </body>
+
 </html>
