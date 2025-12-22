@@ -383,6 +383,10 @@
         }
 
         /* About Section - Enhanced Grid */
+        .about h2{
+            text-align: center;
+            margin: 1rem;
+        }
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -391,6 +395,7 @@
             margin-top: 3rem;
         }
 
+        
         .about-visual {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
@@ -410,7 +415,7 @@
         .about-visual img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit:cover;
             object-position: center;
             border-radius: 16px;
             display: block;
@@ -652,12 +657,18 @@
         }
 
         /* Enhanced Contact Section */
+
         .contact {
             background: linear-gradient(135deg, white 0%, var(--accent-warm) 100%);
             border-radius: 30px;
             padding: 5rem 3rem;
             box-shadow: var(--shadow-lg);
             border: 2px solid var(--secondary-light);
+        }
+
+        .contact h2{
+            text-align: center;
+            margin: 1rem;
         }
 
         .contact-content {
@@ -807,6 +818,11 @@
         }
 
         /* Enhanced Course Cards with Certificate Frames */
+        .courses h2{
+            text-align: center;
+            margin: 1rem;
+        }
+        
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -840,7 +856,6 @@
 
         .course-image img {
             width: 100%;
-            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -984,6 +999,11 @@
         }
 
         /* Testimonials / Patient Success Stories Grid */
+
+        .testimonials h2{
+            text-align: center;
+            margin: 1rem;
+        }
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1362,13 +1382,13 @@
         </div>
     </section>
 
-    <section id="about">
+    <section class="about" id="about">
         <h2>About PhysioWell</h2>
         <div class="three-word-message">Heal • Move • Thrive</div>
         <div class="about-content">
             <div class="about-visual">
                 <!-- Replace src with your doctor's image -->
-                <img src="./images/2.jpeg" alt="Dr. PhysioWell">
+                <img class="dr-image" src="./images/2.jpeg" alt="Dr. PhysioWell">
                 <div class="about-visual-placeholder">
                     <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -1458,7 +1478,7 @@
 
             <div class="course-card">
                 <div class="course-image">
-                    <img src="./images/6.jpeg" alt="Sports Physical Therapy"> 
+                    <img src="./images/6.jpeg"  alt="Sports Physical Therapy"> 
                     <div class="course-image-placeholder">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -1611,7 +1631,7 @@
         </div>
     </section>
 
-    <section id="testimonials">
+    <section class="testimonials" id="testimonials">
         <h2>Patient Success Stories</h2>
         <div class="three-word-message">Real • Results • Reviews</div>
         <div class="testimonials-grid">
