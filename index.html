@@ -72,6 +72,13 @@
             color: var(--dominant-color);
         }
 
+        /* Center specific section headings */
+        #about h2,
+        #testimonials h2,
+        #contact h2 {
+            text-align: center;
+        }
+
         /* Professional Header */
         header {
             background: var(--bg-white, #ffffff);
@@ -839,10 +846,14 @@
         }
 
         .course-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            z-index: 1;
         }
 
         .course-card:hover .course-image img {
@@ -858,6 +869,10 @@
             justify-content: center;
             color: var(--dominant-light);
             padding: 2rem;
+        }
+
+        .course-image img+.course-image-placeholder {
+            display: none;
         }
 
         .course-image-placeholder svg {
@@ -1379,8 +1394,8 @@
             </div>
             <div class="about-heading">
                 <h3>Expert Care</h3>
-                <p>Over 15 years of specialized experience in physiotherapy and rehabilitation, bringing evidence-based
-                    treatments to every patient.</p>
+                <p>Extensive specialized experience in physiotherapy and rehabilitation, delivering evidence-based care
+                    to every patient.</p>
             </div>
             <div class="about-text">
                 <h3>Personalized Treatment</h3>
@@ -1412,6 +1427,24 @@
                 <p>Hands-on treatment techniques to improve mobility, reduce pain, and restore optimal function to your
                     body.</p>
             </div>
+            <div class="service-card">
+                <div class="service-icon">🧠</div>
+                <h3>Neurological Rehabilitation</h3>
+                <p>Specialized treatment for neurological conditions, helping restore function and independence through
+                    targeted therapy and recovery programs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🦴</div>
+                <h3>Orthopaedic Rehabilitation</h3>
+                <p>Expert care for bone, joint, and muscle injuries, focusing on restoring strength, mobility, and
+                    function after orthopedic procedures.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👴</div>
+                <h3>Geriatric Rehabilitation</h3>
+                <p>Compassionate care designed for older adults, improving balance, mobility, and quality of life
+                    through age-appropriate therapeutic interventions.</p>
+            </div>
         </div>
     </section>
 
@@ -1422,7 +1455,7 @@
         <div class="courses-grid">
             <div class="course-card">
                 <div class="course-image">
-                     <img src="./images/1.jpeg" alt="Doctor of Physical Therapy"> 
+                    <img src="./images/1.jpeg" alt="Doctor of Physical Therapy">
                     <div class="course-image-placeholder">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -1434,8 +1467,9 @@
                 </div>
                 <div class="course-content">
                     <h3>Bachelor of Physiotherapy(BPT)</h3>
-                    <p>University of Medical Sciences - Advanced doctoral program in physical therapy with
-                        specialization in orthopedic and sports rehabilitation.</p>
+                    <p><b>Maharashtra University of Health Sciences (MUHS), Nashik </b>
+                        Advanced doctoral program in Physical Therapy with specialization in Orthopedic and Sports
+                        Rehabilitation.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1444,7 +1478,7 @@
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
-                            <span>2015-2018</span>
+                            <span>2020-2025</span>
                         </div>
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1458,7 +1492,7 @@
 
             <div class="course-card">
                 <div class="course-image">
-                    <img src="./images/6.jpeg" alt="Sports Physical Therapy"> 
+                    <img src="./images/6.1.png" alt="Sports Physical Therapy">
                     <div class="course-image-placeholder">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -1469,9 +1503,9 @@
                     <span class="course-badge">2019</span>
                 </div>
                 <div class="course-content">
-                    <h3>Sports Physical Therapy Certification</h3>
-                    <p>American Board of Physical Therapy Specialties - Board certified specialist in sports physical
-                        therapy and athletic performance.</p>
+                    <h3>Certified Ergonomics and Workplace Assessment Specialist</h3>
+                    <p>Specializing in workplace design, musculoskeletal injury prevention, and productivity
+                        optimization.</p>
                     <div class="course-meta">
                         <div class="course-meta-item">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1490,75 +1524,9 @@
                 </div>
             </div>
 
-            <div class="course-card">
-                <div class="course-image">
-                    <!-- <img src="certification-manual.jpg" alt="Manual Therapy"> -->
-                    <div class="course-image-placeholder">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                        <p>Certification</p>
-                    </div>
-                    <span class="course-badge">2020</span>
-                </div>
-                <div class="course-content">
-                    <h3>Advanced Manual Therapy Certificate</h3>
-                    <p>International Academy of Orthopedic Medicine - Comprehensive training in manual therapy
-                        techniques and joint mobilization.</p>
-                    <div class="course-meta">
-                        <div class="course-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4M12 8h.01"></path>
-                            </svg>
-                            <span>Advanced Level</span>
-                        </div>
-                        <div class="course-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span>Certified</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="course-card">
-                <div class="course-image">
-                    <!-- <img src="certification-cme.jpg" alt="Continuing Education"> -->
-                    <div class="course-image-placeholder">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                        <p>Certification</p>
-                    </div>
-                    <span class="course-badge">Ongoing</span>
-                </div>
-                <div class="course-content">
-                    <h3>Continuing Medical Education (CME)</h3>
-                    <p>Regular participation in advanced workshops, seminars, and conferences to stay current with
-                        latest evidence-based practices.</p>
-                    <div class="course-meta">
-                        <div class="course-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span>Annual 40+ Hours</span>
-                        </div>
-                        <div class="course-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            <span>Updated</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
 
         <div class="client-showcase">
@@ -1616,19 +1584,34 @@
         <div class="three-word-message">Real • Results • Reviews</div>
         <div class="testimonials-grid">
             <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="./images/3.jpeg" alt="Rajesh Kumar">
+                    </div>
+                    <div class="testimonial-author">Rajesh Kumar</div>
+                </div>
                 <p class="testimonial-text">After my knee injury, I thought my running days were over. The personalized
                     treatment plan helped me recover completely. Now I'm stronger than before!</p>
-                <div class="testimonial-author">- John Smith</div>
             </div>
             <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="./images/4.jpeg" alt="Priya Sharma">
+                    </div>
+                    <div class="testimonial-author">Priya Sharma</div>
+                </div>
                 <p class="testimonial-text">Years of chronic back pain are finally gone. The combination of manual
                     therapy and exercises was life-changing. Highly recommend!</p>
-                <div class="testimonial-author">- Sarah Patel</div>
             </div>
             <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <img src="./images/5.jpeg" alt="Amit Deshmukh">
+                    </div>
+                    <div class="testimonial-author">Amit Deshmukh</div>
+                </div>
                 <p class="testimonial-text">Professional, knowledgeable, and truly caring. The team guided me through my
                     ACL recovery with exceptional support every step of the way.</p>
-                <div class="testimonial-author">- Michael Johnson</div>
             </div>
         </div>
     </section>
@@ -1637,11 +1620,20 @@
         <h2>Get Started Today</h2>
         <div class="three-word-message">Connect • Consult • Recover</div>
         <div class="contact-content">
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="tel" placeholder="Phone Number">
-                <textarea placeholder="Tell us about your condition or goals" required></textarea>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Get your Access Key from https://web3forms.com/ -->
+                <input type="hidden" name="access_key" value="9206433d-d5bf-4818-b4ed-bab294a018a1">
+
+                <!-- Optional: Redirect to a thank you page after submission -->
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+                <!-- Form will be sent to this email (your email) -->
+                <input type="hidden" name="email" value="shubhampadghan7066@gmail.com">
+
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="user_email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number">
+                <textarea name="message" placeholder="Tell us about your condition or goals" required></textarea>
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
             <div class="contact-info">
@@ -1649,21 +1641,21 @@
                     <div class="contact-icon">📍</div>
                     <div class="contact-details">
                         <h3>Visit Us</h3>
-                        <p>123 Wellness Street<br>Medical Plaza, Suite 200<br>City, State 12345</p>
+                        <p>Sambhaji Nagar</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
                     <div class="contact-details">
                         <h3>Call Us</h3>
-                        <p>+1 (555) 123-4567<br>Mon-Fri: 8am-6pm<br>Sat: 9am-2pm</p>
+                        <p>+91 70662 84060<br>Mon-Fri: 8am-6pm<br>Sat: 9am-2pm</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">✉️</div>
                     <div class="contact-details">
                         <h3>Email Us</h3>
-                        <p>info@physiowell.com<br>bookings@physiowell.com</p>
+                        <p>shubhampadghan7066@gmail.com</p>
                     </div>
                 </div>
             </div>
