@@ -663,6 +663,111 @@
             font-size: 1.1rem;
         }
 
+        /* Appointment Booking Section */
+        .appointments {
+            background: linear-gradient(135deg, var(--accent-warm) 0%, white 100%);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--secondary-light);
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .booking-iframe {
+            width: 100%;
+            min-height: 700px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .booking-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--accent-warm);
+            border-radius: 15px;
+        }
+
+        .booking-info p {
+            color: var(--dominant-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .booking-fallback {
+            text-align: center;
+            padding: 3rem;
+            background: var(--accent-warm);
+            border-radius: 15px;
+        }
+
+        .booking-fallback h3 {
+            color: var(--dominant-color);
+            margin-bottom: 1rem;
+        }
+
+        .booking-fallback p {
+            color: var(--dominant-light);
+            margin-bottom: 2rem;
+        }
+
+        .booking-button {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--heading-font);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .booking-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Wellness Section Styles */
+        .wellness-quotes .quote-card {
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .wellness-quotes .quote-card p {
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        .wellness-tips,
+        .exercise-guide {
+            overflow: hidden;
+        }
+
+        .tip-item,
+        .exercise-guide>div>div {
+            max-width: 100%;
+        }
+
+        .tip-item p,
+        .tip-item h4,
+        .exercise-guide h4,
+        .exercise-guide p {
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
         /* Enhanced Contact Section */
 
         .contact {
@@ -1283,6 +1388,27 @@
                 display: none;
             }
 
+            /* Booking Section Mobile */
+            .appointments {
+                padding: 3rem 1.5rem;
+            }
+
+            .booking-container {
+                padding: 1rem;
+            }
+
+            .booking-iframe {
+                min-height: 600px;
+            }
+
+            .booking-info {
+                padding: 1.5rem;
+            }
+
+            .booking-info p {
+                font-size: 1rem;
+            }
+
             /* Footer Mobile */
             footer {
                 padding: 2rem 1.5rem;
@@ -1360,7 +1486,8 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#courses">Credentials</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+                <li><a href="#appointments">Book Appointment</a></li>
+                <li><a href="#appointments" class="nav-cta">Book Appointment</a></li>
             </ul>
         </nav>
     </header>
@@ -1636,32 +1763,190 @@
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <h2>Get Started Today</h2>
-        <div class="three-word-message">Connect • Consult • Recover</div>
-        <div class="contact-content">
-            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <!-- Get your Access Key from https://web3forms.com/ -->
-                <input type="hidden" name="access_key" value="9206433d-d5bf-4818-b4ed-bab294a018a1">
+    <!-- Appointment Booking Section -->
+    <section class="appointments" id="appointments">
+        <h2>Book Your Appointment</h2>
+        <div class="three-word-message">Schedule • Confirm • Recover</div>
 
-                <!-- Optional: Redirect to a thank you page after submission -->
+        <div class="booking-info">
+            <p>Fill out the form below to request an appointment. We'll review your request and confirm your appointment
+                within 24 hours via email or phone.</p>
+            <p><strong>Available Services:</strong> Initial Consultation, Follow-up Session, Sports Rehabilitation,
+                Manual Therapy, and more.</p>
+        </div>
+
+        <div class="booking-container">
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Configuration -->
+                <input type="hidden" name="access_key" value="9206433d-d5bf-4818-b4ed-bab294a018a1">
+                <input type="hidden" name="subject" value="New Appointment Request - PhysioWell">
                 <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-                <!-- Form will be sent to this email (your email) -->
-                <input type="hidden" name="email" value="shubhampadghan7066@gmail.com">
+                <!-- Patient Information -->
+                <input type="text" name="name" placeholder="Your Full Name *" required>
 
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="user_email" placeholder="Email Address" required>
-                <input type="tel" name="phone" placeholder="Phone Number">
-                <textarea name="message" placeholder="Tell us about your condition or goals" required></textarea>
-                <button type="submit" class="submit-button">Send Message</button>
+                <input type="email" name="email" placeholder="Email Address *" required>
+
+                <input type="tel" name="phone" placeholder="Phone Number *" required>
+
+                <!-- Appointment Details -->
+                <select name="service" required
+                    style="width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; border: 2px solid var(--secondary-light); border-radius: 12px; font-family: var(--body-font); font-size: 1rem; background: white; color: var(--dominant-light);">
+                    <option value="">Select Service *</option>
+                    <option value="Initial Consultation (45 min)">Initial Consultation (45 min)</option>
+                    <option value="Follow-up Session (30 min)">Follow-up Session (30 min)</option>
+                    <option value="Sports Rehabilitation (60 min)">Sports Rehabilitation (60 min)</option>
+                    <option value="Manual Therapy (45 min)">Manual Therapy (45 min)</option>
+                    <option value="Neurological Rehabilitation">Neurological Rehabilitation</option>
+                    <option value="Orthopaedic Rehabilitation">Orthopaedic Rehabilitation</option>
+                    <option value="Geriatric Rehabilitation">Geriatric Rehabilitation</option>
+                </select>
+
+                <input type="date" name="preferred_date" placeholder="Preferred Date" required
+                    style="width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; border: 2px solid var(--secondary-light); border-radius: 12px; font-family: var(--body-font); font-size: 1rem; background: white;">
+
+                <select name="preferred_time" required
+                    style="width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; border: 2px solid var(--secondary-light); border-radius: 12px; font-family: var(--body-font); font-size: 1rem; background: white; color: var(--dominant-light);">
+                    <option value="">Preferred Time Slot *</option>
+                    <option value="08:00 - 09:00">08:00 - 09:00</option>
+                    <option value="09:00 - 10:00">09:00 - 10:00</option>
+                    <option value="10:00 - 11:00">10:00 - 11:00</option>
+                    <option value="11:00 - 12:00">11:00 - 12:00</option>
+                    <option value="12:00 - 13:00">12:00 - 13:00</option>
+                    <option value="14:00 - 15:00">14:00 - 15:00</option>
+                    <option value="15:00 - 16:00">15:00 - 16:00</option>
+                    <option value="16:00 - 17:00">16:00 - 17:00</option>
+                    <option value="17:00 - 18:00">17:00 - 18:00</option>
+                </select>
+
+                <textarea name="message" placeholder="Describe your condition or reason for visit (optional)"
+                    rows="4"></textarea>
+
+                <button type="submit" class="submit-button">Request Appointment</button>
+
+                <p style="text-align: center; margin-top: 1rem; color: var(--dominant-light); font-size: 0.9rem;">
+                    📅 We'll confirm your appointment within 24 hours via email or phone
+                </p>
             </form>
-            <div class="contact-info">
+        </div>
+    </section>
+
+    <section class="contact" id="wellness">
+        <h2>Health & Wellness Resources</h2>
+        <div class="three-word-message">Heal • Strengthen • Thrive</div>
+
+        <!-- Motivational Quotes -->
+        <div class="wellness-quotes"
+            style="margin: 3rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="quote-card"
+                style="background: white; padding: 2rem; border-radius: 15px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--secondary-color);">
+                <p style="font-style: italic; color: var(--dominant-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                    "Movement is medicine. Every step forward is progress."
+                </p>
+                <p style="color: var(--secondary-color); font-weight: 600;">— Recovery Wisdom</p>
+            </div>
+            <div class="quote-card"
+                style="background: white; padding: 2rem; border-radius: 15px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--secondary-color);">
+                <p style="font-style: italic; color: var(--dominant-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                    "Your body has the ability to heal. Give it movement, time, and patience."
+                </p>
+                <p style="color: var(--secondary-color); font-weight: 600;">— Healing Principles</p>
+            </div>
+            <div class="quote-card"
+                style="background: white; padding: 2rem; border-radius: 15px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--secondary-color);">
+                <p style="font-style: italic; color: var(--dominant-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                    "Strength doesn't come from what you can do. It comes from overcoming the things you once thought
+                    you couldn't."
+                </p>
+                <p style="color: var(--secondary-color); font-weight: 600;">— Recovery Motivation</p>
+            </div>
+        </div>
+
+        <!-- Quick Exercise Tips -->
+        <div class="wellness-tips"
+            style="background: white; border-radius: 20px; padding: 3rem; margin: 3rem 0; box-shadow: var(--shadow-md);">
+            <h3 style="color: var(--dominant-color); margin-bottom: 2rem; text-align: center;">Daily Wellness Tips</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="tip-item" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2.5rem;">
+                        🏃</div>
+                    <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Stay Active</h4>
+                    <p style="color: var(--dominant-light);">30 minutes of daily movement keeps your body strong and
+                        flexible</p>
+                </div>
+                <div class="tip-item" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2.5rem;">
+                        💧</div>
+                    <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Stay Hydrated</h4>
+                    <p style="color: var(--dominant-light);">Drink 8-10 glasses of water daily for optimal muscle
+                        function</p>
+                </div>
+                <div class="tip-item" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2.5rem;">
+                        🧘</div>
+                    <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Stretch Daily</h4>
+                    <p style="color: var(--dominant-light);">Regular stretching improves flexibility and prevents
+                        injuries</p>
+                </div>
+                <div class="tip-item" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2.5rem;">
+                        😴</div>
+                    <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Rest Well</h4>
+                    <p style="color: var(--dominant-light);">7-9 hours of quality sleep aids recovery and healing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple Exercises -->
+        <div class="exercise-guide"
+            style="background: var(--accent-warm); border-radius: 20px; padding: 3rem; margin: 3rem 0;">
+            <h3 style="color: var(--dominant-color); margin-bottom: 2rem; text-align: center;">Quick Desk Stretches (5
+                Minutes)</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div style="text-align: center;">
+                    <div style="background: white; border-radius: 15px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                        <p style="font-size: 3rem; margin-bottom: 0.5rem;">🙆</p>
+                        <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Neck Rolls</h4>
+                        <p style="color: var(--dominant-light); font-size: 0.9rem;">10 reps each direction</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="background: white; border-radius: 15px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                        <p style="font-size: 3rem; margin-bottom: 0.5rem;">🤸</p>
+                        <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Shoulder Shrugs</h4>
+                        <p style="color: var(--dominant-light); font-size: 0.9rem;">15 reps, hold 3 seconds</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="background: white; border-radius: 15px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                        <p style="font-size: 3rem; margin-bottom: 0.5rem;">🧘</p>
+                        <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Seated Twist</h4>
+                        <p style="color: var(--dominant-light); font-size: 0.9rem;">10 reps each side</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="background: white; border-radius: 15px; padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                        <p style="font-size: 3rem; margin-bottom: 0.5rem;">🦵</p>
+                        <h4 style="color: var(--dominant-color); margin-bottom: 0.5rem;">Leg Extensions</h4>
+                        <p style="color: var(--dominant-light); font-size: 0.9rem;">10 reps each leg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-content">
+            <div class="contact-info"
+                style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div class="contact-details">
                         <h3>Visit Us</h3>
-                        <p>Sambhaji Nagar</p>
+                        <p>Chh. Sambhajinagar</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1678,9 +1963,15 @@
                         <p>shubhampadghan7066@gmail.com</p>
                     </div>
                 </div>
-            </div>
-            <div class="contact-visual">
-                <div>🗺️</div>
+                <div class="contact-item">
+                    <div class="contact-icon">📅</div>
+                    <div class="contact-details">
+                        <h3>Book Appointment</h3>
+                        <p><a href="#appointments"
+                                style="color: var(--secondary-color); text-decoration: none; font-weight: 600;">Schedule
+                                Online →</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1721,12 +2012,7 @@
             });
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you within 24 hours to schedule your consultation.');
-            this.reset();
-        });
+
 
         // Header scroll effect
         let lastScroll = 0;
