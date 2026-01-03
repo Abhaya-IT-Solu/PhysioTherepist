@@ -46,6 +46,8 @@
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100vw;
         }
 
         /* Typography with enhanced hierarchy */
@@ -1407,6 +1409,26 @@
                 margin-left: 0 !important;
             }
 
+            /* Mobile width constraints */
+            section,
+            .hero,
+            .about,
+            .services,
+            .courses,
+            .testimonials,
+            .appointments,
+            .contact {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            img,
+            video,
+            .course-image,
+            .certificate-card {
+                max-width: 100%;
+            }
+
             /* Hero Section Mobile */
             .hero {
                 min-height: 500px;
@@ -1500,6 +1522,27 @@
                 padding: 1.5rem;
             }
 
+            /* Certificate images - mobile responsive */
+            #certificates .course-image,
+            #certificates~.course-card .course-image {
+                height: 250px;
+            }
+
+            #certificates .course-content,
+            #certificates~.course-card .course-content {
+                padding: 0.5rem;
+            }
+
+            #certificates .course-content h3,
+            #certificates~.course-card .course-content h3 {
+                font-size: 0.85rem;
+            }
+
+            #certificates .course-content p,
+            #certificates~.course-card .course-content p {
+                font-size: 0.7rem;
+            }
+
             /* Clients/Memberships Mobile */
             .clients-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1512,6 +1555,16 @@
 
             .client-showcase {
                 padding: 2rem 1.5rem;
+            }
+
+            /* Contact Info Mobile - Single Column */
+            .contact-info {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .contact-item {
+                width: 100%;
             }
 
             /* Contact Form Mobile */
