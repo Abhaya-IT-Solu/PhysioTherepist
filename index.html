@@ -390,10 +390,11 @@
         }
 
         /* About Section - Enhanced Grid */
-        .about h2{
+        .about h2 {
             text-align: center;
             margin: 1rem;
         }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -402,13 +403,12 @@
             margin-top: 3rem;
         }
 
-        
+
         .about-visual {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
             width: 100%;
             aspect-ratio: 1;
-            max-width: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -422,9 +422,8 @@
         .about-visual img {
             width: 100%;
             height: 100%;
-            object-fit:cover;
+            object-fit: cover;
             object-position: center;
-            border-radius: 16px;
             display: block;
         }
 
@@ -493,6 +492,120 @@
         .about-text p {
             color: var(--dominant-light);
             line-height: 1.8;
+        }
+
+        /* Certificates Section */
+        .certificates {
+            background: linear-gradient(135deg, white 0%, var(--accent-warm) 100%);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--secondary-light);
+        }
+
+        .certificates h2 {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid var(--secondary-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary-color);
+        }
+
+        .certificate-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .certificate-card h3 {
+            color: var(--dominant-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .certificate-card p {
+            color: var(--dominant-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .certificate-buttons {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cert-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-family: var(--body-font);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .cert-view {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .cert-view:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cert-download {
+            background: white;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .cert-download:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
 
         /* Enhanced Services Section */
@@ -672,6 +785,10 @@
             border: 2px solid var(--secondary-light);
         }
 
+        .appointments h2 {
+            text-align: center;
+        }
+
         .booking-container {
             max-width: 1200px;
             margin: 3rem auto 0;
@@ -774,11 +891,12 @@
             background: linear-gradient(135deg, white 0%, var(--accent-warm) 100%);
             border-radius: 30px;
             padding: 5rem 3rem;
+            margin-top: 4rem;
             box-shadow: var(--shadow-lg);
             border: 2px solid var(--secondary-light);
         }
 
-        .contact h2{
+        .contact h2 {
             text-align: center;
             margin: 1rem;
         }
@@ -930,11 +1048,11 @@
         }
 
         /* Enhanced Course Cards with Certificate Frames */
-        .courses h2{
+        .courses h2 {
             text-align: center;
             margin: 1rem;
         }
-        
+
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -978,6 +1096,24 @@
 
         .course-card:hover .course-image img {
             transform: scale(1.05);
+        }
+
+        /* Certificate images - show full image without cropping */
+        #certificates .course-image,
+        #certificates~.course-card .course-image {
+            height: 350px;
+        }
+
+        #certificates .course-image img,
+        #certificates~.course-card .course-image img {
+            position: relative;
+            object-fit: contain;
+            height: 100%;
+        }
+
+        #certificates:hover .course-image img,
+        #certificates~.course-card:hover .course-image img {
+            transform: scale(1.02);
         }
 
         .course-image-placeholder {
@@ -1120,10 +1256,11 @@
 
         /* Testimonials / Patient Success Stories Grid */
 
-        .testimonials h2{
+        .testimonials h2 {
             text-align: center;
             margin: 1rem;
         }
+
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1333,6 +1470,16 @@
                 padding: 1.5rem;
             }
 
+            /* Certificates Mobile */
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .certificate-card {
+                padding: 2rem;
+            }
+
             /* Testimonials Mobile */
             .testimonials-grid {
                 grid-template-columns: 1fr;
@@ -1486,7 +1633,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#courses">Credentials</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#appointments">Book Appointment</a></li>
+                <li><a href="#courses">Certificates</a></li>
                 <li><a href="#appointments" class="nav-cta">Book Appointment</a></li>
             </ul>
         </nav>
@@ -1582,7 +1729,7 @@
             </div>
             <div class="service-card">
                 <div class="service-icon">🦴</div>
-                <h3>Orthopaedic Rehabilitation</h3>
+                <h3>Pediatric</h3>
                 <p>Expert care for bone, joint, and muscle injuries, focusing on restoring strength, mobility, and
                     function after orthopedic procedures.</p>
             </div>
@@ -1639,7 +1786,7 @@
 
             <div class="course-card">
                 <div class="course-image">
-                    <img src="./images/6.jpeg"  alt="Sports Physical Therapy"> 
+                    <img src="./images/6.jpeg" alt="Sports Physical Therapy">
                     <div class="course-image-placeholder">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -1671,6 +1818,65 @@
                 </div>
             </div>
 
+            <!-- Certificate 1 -->
+            <div class="course-card" id="certificates">
+                <div class="course-image">
+                    <img src="./images/Certificate 1.jpg" alt="Certificate 1">
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certificate</p>
+                    </div>
+                </div>
+                <div class="course-content" style="padding: 0.75rem; text-align: center;">
+                    <h3 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Modern Chiropractor's Approach for Low Back
+                        Pain</h3>
+                    <p style="font-size: 0.75rem; margin-bottom: 0; line-height: 1.3;">🏛 ISOMT Foundation<br>Advanced
+                        Assessment, Adjustments & Rehab for Long-Term Results</p>
+                </div>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="./images/Certificate 2.jpg" alt="Certificate 2">
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certificate</p>
+                    </div>
+                </div>
+                <div class="course-content" style="padding: 0.75rem; text-align: center;">
+                    <h3 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Myofascial Meridians – Assessing & Balancing
+                    </h3>
+                    <p style="font-size: 0.75rem; margin-bottom: 0; line-height: 1.3;">🏛 ISOMT Foundation<br>For Manual
+                        & Movement Therapists</p>
+                </div>
+            </div>
+
+            <!-- Certificate 3 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="./images/Certificate 1 3.jpg" alt="Certificate 3">
+                    <div class="course-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        <p>Certificate</p>
+                    </div>
+                </div>
+                <div class="course-content" style="padding: 0.75rem; text-align: center;">
+                    <h3 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Modern Chiropractor's Approach for Low Back
+                        Pain</h3>
+                    <p style="font-size: 0.75rem; margin-bottom: 0; line-height: 1.3;">🏛 ISOMT Foundation<br>Advanced
+                        Assessment, Adjustments & Rehab for Long-Term Results</p>
+                </div>
+            </div>
 
 
 
@@ -1798,7 +2004,7 @@
                     <option value="Sports Rehabilitation (60 min)">Sports Rehabilitation (60 min)</option>
                     <option value="Manual Therapy (45 min)">Manual Therapy (45 min)</option>
                     <option value="Neurological Rehabilitation">Neurological Rehabilitation</option>
-                    <option value="Orthopaedic Rehabilitation">Orthopaedic Rehabilitation</option>
+                    <option value="Pediatric">Pediatric</option>
                     <option value="Geriatric Rehabilitation">Geriatric Rehabilitation</option>
                 </select>
 
@@ -1941,7 +2147,7 @@
         <!-- Contact Information -->
         <div class="contact-content">
             <div class="contact-info"
-                style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div class="contact-details">
